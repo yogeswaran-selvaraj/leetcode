@@ -11,7 +11,7 @@ class Solution {
             count += 1;
             maxf = Math.max(count, maxf);
             freq.put(ch, count);
-            while((i- j + 1 - maxf) > k){
+            if((i- j + 1 - maxf) > k){
                 ch = s.charAt(j);
                 count = freq.getOrDefault(ch, 0);
                 count -= 1;
