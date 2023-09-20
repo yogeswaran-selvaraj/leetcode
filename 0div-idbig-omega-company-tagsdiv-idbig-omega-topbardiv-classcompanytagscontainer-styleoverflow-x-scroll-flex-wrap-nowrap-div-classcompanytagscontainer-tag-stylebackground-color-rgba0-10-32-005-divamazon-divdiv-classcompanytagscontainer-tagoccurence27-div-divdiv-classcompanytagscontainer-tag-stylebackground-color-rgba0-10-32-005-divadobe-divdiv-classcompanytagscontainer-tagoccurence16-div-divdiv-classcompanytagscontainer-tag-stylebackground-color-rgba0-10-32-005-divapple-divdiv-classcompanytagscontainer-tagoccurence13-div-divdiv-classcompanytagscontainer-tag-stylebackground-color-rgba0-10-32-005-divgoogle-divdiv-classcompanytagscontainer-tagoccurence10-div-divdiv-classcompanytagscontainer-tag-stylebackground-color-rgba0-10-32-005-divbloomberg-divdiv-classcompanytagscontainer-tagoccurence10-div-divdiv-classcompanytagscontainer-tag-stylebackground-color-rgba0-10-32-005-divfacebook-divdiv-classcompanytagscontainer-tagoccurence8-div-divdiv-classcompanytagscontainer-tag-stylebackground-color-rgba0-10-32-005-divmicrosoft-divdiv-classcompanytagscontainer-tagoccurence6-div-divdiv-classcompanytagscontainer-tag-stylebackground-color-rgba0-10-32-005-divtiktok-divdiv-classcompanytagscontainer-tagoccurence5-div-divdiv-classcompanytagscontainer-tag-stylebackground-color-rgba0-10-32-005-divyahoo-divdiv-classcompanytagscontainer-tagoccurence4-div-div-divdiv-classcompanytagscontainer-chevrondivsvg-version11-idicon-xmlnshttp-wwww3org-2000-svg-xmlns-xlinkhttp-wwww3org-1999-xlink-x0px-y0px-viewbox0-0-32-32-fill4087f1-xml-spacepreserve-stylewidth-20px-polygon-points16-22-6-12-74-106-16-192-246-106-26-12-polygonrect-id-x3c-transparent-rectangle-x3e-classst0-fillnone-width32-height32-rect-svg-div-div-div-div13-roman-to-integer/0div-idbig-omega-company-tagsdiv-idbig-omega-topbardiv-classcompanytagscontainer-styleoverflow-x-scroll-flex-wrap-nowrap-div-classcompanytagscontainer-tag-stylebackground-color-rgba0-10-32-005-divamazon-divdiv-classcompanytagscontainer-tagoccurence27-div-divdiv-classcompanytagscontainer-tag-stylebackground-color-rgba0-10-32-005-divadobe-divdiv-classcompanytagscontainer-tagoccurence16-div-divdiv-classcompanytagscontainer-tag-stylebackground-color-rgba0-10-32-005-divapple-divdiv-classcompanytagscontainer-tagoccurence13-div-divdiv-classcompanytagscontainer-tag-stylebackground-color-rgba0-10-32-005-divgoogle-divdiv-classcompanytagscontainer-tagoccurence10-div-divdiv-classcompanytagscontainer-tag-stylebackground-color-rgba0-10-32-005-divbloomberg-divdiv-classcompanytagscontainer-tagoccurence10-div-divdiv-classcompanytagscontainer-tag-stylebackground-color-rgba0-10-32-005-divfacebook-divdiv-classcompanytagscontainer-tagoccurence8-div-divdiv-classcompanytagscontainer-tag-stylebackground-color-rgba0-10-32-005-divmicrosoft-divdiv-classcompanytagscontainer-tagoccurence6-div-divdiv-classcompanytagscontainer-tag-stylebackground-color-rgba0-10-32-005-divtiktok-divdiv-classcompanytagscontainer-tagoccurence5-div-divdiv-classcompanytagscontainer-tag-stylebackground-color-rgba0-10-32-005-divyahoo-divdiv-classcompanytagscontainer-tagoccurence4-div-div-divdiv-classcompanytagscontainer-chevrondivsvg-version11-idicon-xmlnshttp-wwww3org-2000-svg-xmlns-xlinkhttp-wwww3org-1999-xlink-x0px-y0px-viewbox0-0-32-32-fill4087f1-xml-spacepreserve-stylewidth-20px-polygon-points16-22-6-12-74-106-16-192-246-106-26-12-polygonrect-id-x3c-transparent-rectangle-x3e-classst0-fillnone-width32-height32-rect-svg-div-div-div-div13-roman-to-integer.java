@@ -1,36 +1,28 @@
 class Solution {
     public int romanToInt(String s) {
-        HashMap<String, Integer> map = new HashMap<>();
-        map.put("I", 1);
-        map.put("V", 5);
-        map.put("X", 10);
-        map.put("L", 50);
-        map.put("C", 100);
-        map.put("D", 500);
-        map.put("M", 1000);
-        map.put("IV", 4);
-        map.put("IX", 9);
-        map.put("XL", 40);
-        map.put("XC", 90);
-        map.put("CD", 400);
-        map.put("CM", 900);
         int ans = 0;
         int len = s.length();
-        for(int i=0;i<len;i++){
+        int num = 0;
+        int prev = 0;
+        for(int i=len-1;i>=0;i--){
             char current = s.charAt(i);
-            if(i+1==len){
-                ans += map.get("" + current);
-                break;
+            switch(current){
+                case 'I': num = 1; break;
+                case 'V': num = 5; break;
+                case 'X': num = 10; break;
+                case 'L': num = 50; break;
+                case 'C': num = 100; break;
+                case 'D': num = 500; break;
+                case 'M': num = 1000; break;
             }
             
-            char next = s.charAt(i+1);
-            String str = "" + current + next;
-            if(map.containsKey(str)){
-                ans += map.get(str);
-                i++;
+            if(num < prev){
+                ans -= num;
             }else{
-                ans += map.get("" + current);
+                ans += num;
             }
+            
+            prev = num;
         }
         
         return ans;
