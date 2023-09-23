@@ -25,18 +25,30 @@ class Solution {
                     }
 
                 }
+            }else{
+                for (Map.Entry<Character,Integer> entry : sMap.entrySet()) {
+                    char ch = entry.getKey();
+                    int sMapVal = entry.getValue();
+                    int tMapVal = tMap.getOrDefault(ch, 0);
+                    if(sMapVal != tMapVal){
+                        return false;
+                    }
+
+                }
+            }
+        }else{
+            for (Map.Entry<Character,Integer> entry : sMap.entrySet()) {
+                char ch = entry.getKey();
+                int sMapVal = entry.getValue();
+                int tMapVal = tMap.getOrDefault(ch, 0);
+                if(sMapVal != tMapVal){
+                    return false;
+                }
+
             }
         }
         
-        for (Map.Entry<Character,Integer> entry : sMap.entrySet()) {
-            char ch = entry.getKey();
-            int sMapVal = entry.getValue();
-            int tMapVal = tMap.getOrDefault(ch, 0);
-            if(sMapVal != tMapVal){
-                return false;
-            }
-
-        }
+        
         
         return true;
             
