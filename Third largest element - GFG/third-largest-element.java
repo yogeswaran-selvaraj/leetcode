@@ -33,23 +33,44 @@ class Solution
 	        return -1;
 	    }
 	    
-	    PriorityQueue<Integer> heap = new PriorityQueue<>();
-	   // PriorityQueue<Integer> pq =new PriorityQueue<>((x, y) -> Integer.compare(y, x));
-	    for(int i=0;i<3;i++){
-	        heap.add(a[i]);
-	    }
+	    int first = Integer.MIN_VALUE;
+	    int second = Integer.MIN_VALUE;
+	    int third = Integer.MIN_VALUE;
 	    
-	    
-	    for(int i=3; i< n; i++){
-	        if(heap.peek() < a[i]){
-	            heap.poll();
-	            heap.add(a[i]);
+	    for(int i=0; i<n; i++){
+	        if(a[i] > first){
+	            third = second;
+	            second = first;
+	            first = a[i];
+	        }
+	        else if(a[i] > second){
+	            third = second;
+	            second = a[i];
+	        }
+	        else if(a[i] > third){
+	            third = a[i];
 	        }
 	    }
 	    
-	   // System.out.println(heap);
+	    return third;
 	    
-	    return heap.peek();
+	   // PriorityQueue<Integer> heap = new PriorityQueue<>();
+	   //// PriorityQueue<Integer> pq =new PriorityQueue<>((x, y) -> Integer.compare(y, x));
+	   // for(int i=0;i<3;i++){
+	   //     heap.add(a[i]);
+	   // }
+	    
+	    
+	   // for(int i=3; i< n; i++){
+	   //     if(heap.peek() < a[i]){
+	   //         heap.poll();
+	   //         heap.add(a[i]);
+	   //     }
+	   // }
+	    
+	   //// System.out.println(heap);
+	    
+	   // return heap.peek();
 	    
     }
 }
