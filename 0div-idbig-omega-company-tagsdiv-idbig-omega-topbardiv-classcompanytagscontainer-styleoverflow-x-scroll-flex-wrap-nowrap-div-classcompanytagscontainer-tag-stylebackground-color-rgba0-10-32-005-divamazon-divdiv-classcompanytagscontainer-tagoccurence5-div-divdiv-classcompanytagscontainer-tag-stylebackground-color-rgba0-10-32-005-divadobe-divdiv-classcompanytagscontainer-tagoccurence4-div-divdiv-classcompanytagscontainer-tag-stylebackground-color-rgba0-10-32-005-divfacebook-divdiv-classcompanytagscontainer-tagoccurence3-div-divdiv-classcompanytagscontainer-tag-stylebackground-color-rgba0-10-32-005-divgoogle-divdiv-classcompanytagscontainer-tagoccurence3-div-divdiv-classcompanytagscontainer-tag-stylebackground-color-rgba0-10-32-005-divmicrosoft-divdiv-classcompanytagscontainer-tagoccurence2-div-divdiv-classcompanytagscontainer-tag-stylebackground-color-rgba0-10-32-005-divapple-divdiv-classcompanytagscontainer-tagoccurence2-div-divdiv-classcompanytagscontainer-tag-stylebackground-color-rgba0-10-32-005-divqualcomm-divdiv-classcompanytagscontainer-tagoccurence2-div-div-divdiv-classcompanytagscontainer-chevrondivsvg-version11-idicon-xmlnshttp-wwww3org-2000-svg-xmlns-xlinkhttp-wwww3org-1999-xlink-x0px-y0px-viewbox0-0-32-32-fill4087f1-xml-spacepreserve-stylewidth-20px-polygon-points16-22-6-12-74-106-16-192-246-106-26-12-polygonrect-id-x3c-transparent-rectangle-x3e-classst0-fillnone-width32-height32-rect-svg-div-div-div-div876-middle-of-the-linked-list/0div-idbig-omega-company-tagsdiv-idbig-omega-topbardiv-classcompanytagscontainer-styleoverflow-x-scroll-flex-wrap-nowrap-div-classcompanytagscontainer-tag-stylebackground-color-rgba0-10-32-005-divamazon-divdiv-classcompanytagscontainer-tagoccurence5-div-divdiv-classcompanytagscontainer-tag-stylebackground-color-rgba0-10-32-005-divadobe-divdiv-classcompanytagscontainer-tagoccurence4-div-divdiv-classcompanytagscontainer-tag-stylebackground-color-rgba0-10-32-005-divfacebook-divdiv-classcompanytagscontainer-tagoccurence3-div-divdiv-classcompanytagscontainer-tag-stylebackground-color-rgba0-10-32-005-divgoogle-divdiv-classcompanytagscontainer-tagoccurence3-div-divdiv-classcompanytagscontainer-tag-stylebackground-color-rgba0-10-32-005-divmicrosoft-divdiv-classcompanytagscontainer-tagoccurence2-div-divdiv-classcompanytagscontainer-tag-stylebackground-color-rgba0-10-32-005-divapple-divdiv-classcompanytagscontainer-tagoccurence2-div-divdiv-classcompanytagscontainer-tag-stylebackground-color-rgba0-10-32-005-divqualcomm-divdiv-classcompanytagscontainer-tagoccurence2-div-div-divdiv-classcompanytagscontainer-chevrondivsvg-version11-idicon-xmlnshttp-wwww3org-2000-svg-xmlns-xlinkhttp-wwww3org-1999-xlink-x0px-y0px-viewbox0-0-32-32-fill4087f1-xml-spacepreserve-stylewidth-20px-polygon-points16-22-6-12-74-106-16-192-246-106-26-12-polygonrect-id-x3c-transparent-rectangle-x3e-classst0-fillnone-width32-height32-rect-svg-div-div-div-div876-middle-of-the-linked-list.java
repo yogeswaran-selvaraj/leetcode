@@ -14,18 +14,27 @@ class Solution {
             return head;
         }
         
-        int count = 0;
-        ListNode temp = head;
-        while(temp != null){
-            temp = temp.next;
-            count++;
+//         int count = 0;
+//         ListNode temp = head;
+//         while(temp != null){
+//             temp = temp.next;
+//             count++;
+//         }
+        
+//         temp = head;
+//         for(int i=1;i<=count/2;i++){
+//             temp = temp.next;
+//         }
+        
+//         return temp;
+        
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
         }
         
-        temp = head;
-        for(int i=1;i<=count/2;i++){
-            temp = temp.next;
-        }
-        
-        return temp;
+        return slow;
     }
 }
