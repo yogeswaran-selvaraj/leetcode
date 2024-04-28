@@ -8,23 +8,37 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
+// 1 -> 2 -> 3 -> 4 -> 5
+
+// 1) get the count (5)
+// 2) count - n traverse (5 - 2)
+
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        ListNode left = dummy;
-        ListNode right = head;
-        while( n > 0){
-            right = right.next;
-            n--;
+        int count = 0;
+        ListNode temp = head;
+        while(temp != null){
+            temp = temp.next;
+            count++;
         }
         
-        while(right != null){
-            right = right.next;
-            left = left.next;
+        if(count == 1){
+            return temp;
         }
         
-        left.next = left.next.next;
-        return dummy.next;
+        // System.out.println(count);
+        temp = head;
+        if(count - n == 0){
+            return head.next;
+        }
+        
+        for(int i=1; i<(count - n); i++){
+            temp = temp.next;
+        }
+        
+        temp.next = temp.next.next;
+        
+        return head;
     }
 }
