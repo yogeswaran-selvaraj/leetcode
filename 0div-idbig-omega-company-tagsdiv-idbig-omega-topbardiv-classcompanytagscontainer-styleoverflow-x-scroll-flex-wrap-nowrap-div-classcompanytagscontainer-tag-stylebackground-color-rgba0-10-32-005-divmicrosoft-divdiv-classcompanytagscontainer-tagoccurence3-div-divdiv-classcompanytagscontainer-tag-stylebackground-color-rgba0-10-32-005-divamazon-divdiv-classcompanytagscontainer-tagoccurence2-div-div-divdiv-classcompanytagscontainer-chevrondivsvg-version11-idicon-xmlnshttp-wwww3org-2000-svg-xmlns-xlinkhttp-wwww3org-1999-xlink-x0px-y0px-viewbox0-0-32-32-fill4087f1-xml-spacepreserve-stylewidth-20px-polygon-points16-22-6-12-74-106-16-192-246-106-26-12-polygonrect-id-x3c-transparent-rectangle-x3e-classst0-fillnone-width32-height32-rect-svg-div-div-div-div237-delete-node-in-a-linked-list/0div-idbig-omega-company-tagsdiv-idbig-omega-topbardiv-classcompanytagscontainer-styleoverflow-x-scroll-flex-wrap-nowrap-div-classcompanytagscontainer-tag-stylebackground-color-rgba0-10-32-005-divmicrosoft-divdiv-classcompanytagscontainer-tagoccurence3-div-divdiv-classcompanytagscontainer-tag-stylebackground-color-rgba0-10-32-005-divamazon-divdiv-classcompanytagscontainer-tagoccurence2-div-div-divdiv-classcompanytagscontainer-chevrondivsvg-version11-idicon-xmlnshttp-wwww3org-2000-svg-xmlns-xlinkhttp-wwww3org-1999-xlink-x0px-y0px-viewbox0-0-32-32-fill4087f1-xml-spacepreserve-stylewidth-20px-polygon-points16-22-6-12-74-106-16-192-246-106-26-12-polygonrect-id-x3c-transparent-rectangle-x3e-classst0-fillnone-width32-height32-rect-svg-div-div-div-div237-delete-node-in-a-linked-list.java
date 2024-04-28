@@ -7,25 +7,13 @@
  * }
  */
 
-// 4 -> 5 -> 9 -> 2 -> 3 -> 6 -> 7 
-// p.next = null     c    n.val
-// O(N)
+// 4 -> 1       -> 1            -> 9
+//      node     nextNode   
 
 class Solution {
     public void deleteNode(ListNode node) {
-        ListNode prev = null;
-        ListNode current = node;
-        while(current != null){
-            // System.out.println(current.val);
-            ListNode next  = current.next;
-            if(next == null){
-                prev.next = null;
-                return;
-            }
-            
-            current.val = next.val;
-            prev = current;
-            current = next;
-        }
+        ListNode nextNode = node.next;
+        node.val = nextNode.val;
+        node.next = nextNode.next;
     }
 }
